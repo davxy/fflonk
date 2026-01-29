@@ -58,7 +58,7 @@ pub trait RawVerifierKey:
     fn prepare(&self) -> Self::VK;
 }
 
-pub trait PcsParams: Clone {
+pub trait PcsParams {
     type CK: CommitterKey;
     type VK: VerifierKey;
     type RVK: RawVerifierKey<VK = Self::VK>;
@@ -73,7 +73,7 @@ pub trait PcsParams: Clone {
 }
 
 /// Polynomial commitment scheme.
-pub trait PCS<F: PrimeField>: Clone {
+pub trait PCS<F: PrimeField> {
     type C: Commitment<F>;
 
     type Proof: Clone + CanonicalSerialize + CanonicalDeserialize;
